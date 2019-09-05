@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 import pojo.Customer;
 import pojo.Message;
 import pojo.ResponseResult;
+import service.AdminService;
 import service.PersonService;
 import service.exception.UserNoLoginException;
 import utils.UploadFile;
@@ -42,6 +43,38 @@ public class PersonController extends BaseController {
         result.setData(customer);
         return result;
     }
+
+
+    /**
+     * 查找所有雇主
+     * @return
+     */
+    @RequestMapping("/selectAllCustomer")
+    @ResponseBody
+    public ResponseResult<List<Customer>> selectAllCustomer () {
+        ResponseResult<List<Customer>> response = new ResponseResult<>();
+        List<Customer> list = personService.selectAllCustomer();
+        response.setData(list);
+        return response;
+    }
+
+
+    /**
+     * 通过雇主编号，查询雇主的详细信息
+     * @param param
+     * @return
+     */
+    @RequestMapping("/loadCustomer")
+    @ResponseBody
+    public ResponseResult<Customer> loadCustomer(
+            @RequestParam("param")Integer param
+    ){
+        ResponseResult<Customer> result = new ResponseResult<>();
+        Customer cm = personService.getCustomerByID(param);
+        result.setData(cm);
+        return result;
+    }
+
 
     @RequestMapping("/updateCustomer")
     @ResponseBody
@@ -80,6 +113,14 @@ public class PersonController extends BaseController {
     }
 
 
+
+
+
+    /**
+     * 找到所有已经认证的雇主
+     * @param session
+     * @return
+     */
     @RequestMapping("/selectCertifyCustomer")
     @ResponseBody
     public ResponseResult<Customer> selectCertifyCustomer (
@@ -124,6 +165,10 @@ public class PersonController extends BaseController {
         return result;
     }
 
+    /**
+     * 获取所有消息数据
+     * @return
+     */
 
     @RequestMapping("/getAllMessage")
     @ResponseBody
@@ -134,6 +179,11 @@ public class PersonController extends BaseController {
         return result;
     }
 
+    /**
+     * 获取单条数据
+     * @param id
+     * @return
+     */
     @RequestMapping("/getSingleMessage")
     @ResponseBody
     public ResponseResult<String> getSingleMessage (

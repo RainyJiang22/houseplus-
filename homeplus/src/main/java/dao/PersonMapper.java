@@ -16,6 +16,12 @@ public interface PersonMapper {
     Customer selectCustomer (@Param("phone") String phone);
 
 
+    /**
+     * 找到所有的雇主
+     * @return
+     */
+    List<Customer> selectAllCustomer();
+
 
     /**
      * 根据消费者的 id 来获得消费者的信息
@@ -26,7 +32,6 @@ public interface PersonMapper {
 
     /**
      * 更新用户的基本资料
-     * @param 用户的基本资料
      * @return 受影响的行数
      */
     Integer updateCustomer (@Param("cmNickname") String cmNickname, @Param("cmPhone") String cmPhone

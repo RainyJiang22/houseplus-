@@ -18,6 +18,23 @@
           cm_phone = #{phone}
     </select>
 
+    <!--找到所有的雇主-->
+    <select id="selectAllCustomer" resultType="pojo.Customer">
+        SELECT
+            id AS id,
+            cm_headPhoto AS cmheadPhoto,
+            cm_nickname AS cmNickname,
+            cm_password AS cmPassword,
+            cm_name AS cmName,
+            cm_sex AS cmSex,
+            cm_phone AS cmPhone,
+            cm_address AS cmAddress,
+            cm_email AS cmEmail
+        FROM
+            customer
+    </select>
+
+
     <select id="selectCustomerByID" resultType="pojo.Customer">
         SELECT
           id,
@@ -129,9 +146,11 @@
           cm_status != 0
     </select>
 
+    <!--通过编号获取雇主信息-->
     <select id="getCustomerByID" resultType="pojo.Customer">
         SELECT
           cm_name AS cmName,
+          cm_email AS cmEmail,
           cm_phone AS cmPhone,
           cm_status AS cmStatus,
           cm_cardID AS cmCardID,

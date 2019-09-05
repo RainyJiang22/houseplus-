@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>雇主列表</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/appointment.css">
+    <link rel="stylesheet" href="css/sweetalert.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/sweeralert.min.js"></script>
+
+</head>
+<body>
+<!--页面开始的导航-->
+<nav class="navbar navbar-default">
+    <div class="navbar-header">
+        <a href="hk_index.html"></a>
+    </div>
+
+    <div>
+        <ul class="nav navbar-nav">
+            <li>
+                <a href="hk_index.html">
+                    <span class="glyphicon glyphicon-home"></span>
+                    首页
+                </a>
+            </li>
+            <li>
+                <a href="customerlist.html">
+                    <span class="glyphicon glyphicon-home"></span>
+                    雇主列表
+                </a>
+            </li>
+            <li class="log-out">
+                <a href="login.html">
+                    <span class="glyphicon glyphicon-log-out"></span>
+                    退出
+                </a>
+            </li>
+            <li class="space">
+                <a href="#">家政人员中心</a>
+                <ul class="next-menu">
+                    <li>
+                        <a href="hk_person.html">商家资料</a>
+                    </li>
+                    <li>
+                        <a href="hk_app.html">预约列表</a>
+                    </li>
+                    <li>
+                        <a href="hk_order.html">我的订单</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container" style="max-width: 800px">
+<!--雇主数据列表项-->
+<div class="housekeeper-list clearfix">
+    <div class="housekeeper-list-item clearfix">
+        <div class="col-md-3 headImg">
+            <img style="width: 100px; height: 100px;" src="#" alt="家政人员图片"
+                 class="img-rounded"/>
+        </div>
+        <div class="col-md-6">
+            <div><h4>雇主名称</h4></div>
+            <div class="col-md-3">
+                <div>雇主电话</div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <a class="btn btn-primary go-single">进去看看</a>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>
+<script>
+//页面加载函数..
+
+ $(document).ready(function () {
+
+     getAllCustomer($(".housekeeper-list"));
+ });
+
+/**
+ * 获取所有雇主信息
+ * @param container
+ */
+function getAllCustomer(container) {
+        var url = "/person/selectAllCustomer";
+        $.ajax({
+            "url": url,
+            "dataType": "json",
+            "type": "Post",
+            "success": function (json) {
+                container.html("");
+                var list = json.data;
+                for (var i = 0; i < list.length; i ++) {
+                    var optionData= "<div class=\"housekeeper-list-item clearfix\">\n" +
+                        "<div class=\"col-md-3 headImg\">\n" +
+                        "<img style='width: 100px; height: 100px;' src=\"#{cm_headPhoto}\" alt=\"家政人员照片\" class=\"img-rounded\">\n" +
+                        "</div>\n" +
+                        "<div class=\"col-md-6\">\n" +
+                        "<div class=\"h4\">#{cm_name}</div>\n" +
+                        "<div>#{cm_email}</div>\n" +
+                        "<div><a href=\"#\">#{cm_phone}</a></div>\n" +
+                        "</div>\n" +
+                        "<div class=\"col-md-3\">\n" +
+                        "<a href=\"customer.html?id=#{cm_id}\" class=\"btn btn-primary go-single\">进去看看</a>\n" +
+                        "</div>\n" +
+                        "</div>";
+                    optionData = optionData.replace("#{cm_headPhoto}", list[i].cmheadPhoto);
+                    optionData = optionData.replace("#{cm_id}", list[i].id);
+                    optionData = optionData.replace("#{cm_email}", list[i].cmEmail);
+                    optionData = optionData.replace("#{cm_name}", list[i].cmName); //加载名字
+                    optionData = optionData.replace("#{cm_phone}", list[i].cmPhone);//手机号码
+                    container.append(optionData);
+                }
+            }
+        })
+    }
+</script>

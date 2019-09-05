@@ -47,7 +47,7 @@ public class MessageController extends BaseController {
 
 
     /**
-     * 插入该条信息
+     * 插入该条信息(雇主对保姆)
      * @param session
      * @param toID
      * @param msgContent
@@ -63,4 +63,19 @@ public class MessageController extends BaseController {
         messageService.insertMessage(msgContent, session, toID);
         return new ResponseResult<>();
     }
+
+
+    /**
+     * 插入一条信息（保姆对雇主）
+     */
+    @RequestMapping("/insertMessageCM")
+    @ResponseBody
+    public ResponseResult<Void> insertMessageCustomer(HttpSession session,
+                                                      @RequestParam("id")int toID,
+                                                      @RequestParam("msgContent")String msgContent){
+        messageService.insertMessageBYCustomer(msgContent, session, toID);
+
+       return new ResponseResult<>();
+     }
+
 }

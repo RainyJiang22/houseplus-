@@ -42,6 +42,7 @@ $(document).ready(function () {
 })
 
 // 加载家政人员的信息
+// TODO: 家政人员的详细信息中没有相应地址，所以需要公司表中的地址字段
 function showContent(id) {
     var url = "/hk/loadContent";
     var data = "param=" + id;
@@ -52,9 +53,9 @@ function showContent(id) {
         "type": "Post",
         "success": function (json) {
             if (json.state == 200) {
-                $(".title").text(json.data.companyName);
+                $(".title").text(json.data.hkName);
                 $(".address").text();
-                $(".phone").text(displayPhone(json.data.hkPhone));
+                $(".phone").text(json.data.hkPhone);
                 $(".desc_detail").text(json.data.hkDescDetail);
                 $(".head").attr({"src": json.data.hkHeadphoto})
                 showPhone(json.data.hkPhone);
@@ -63,6 +64,10 @@ function showContent(id) {
     })
 }
 
+/**
+ * 显示手机号码 弹窗
+ * @param str
+ */
 function showPhone(str) {
     $(".contact-btn").parent().on("click", "button", function () {
         $("#myModal").modal("show");
@@ -70,8 +75,18 @@ function showPhone(str) {
     })
 }
 
+/*
+  关闭手机弹窗页
+ */
+function hidePhone(){
+    $(".contact-btn").parent().on("click","button",function(){
+       $("#myModal").modal("hide");
+    })
+}
+
 // 发送消息
 function message(id) {
+    //展示发送信息的弹窗
     $(".left-msg").click(function () {
         $("#messageModal").modal("show");
     })
@@ -205,6 +220,7 @@ function getBadNum(data) {
     return badNum;
 }
 
+//隐藏手机号码
 function displayPhone(phone) {
     return phone.substr(0,4) + "****" + phone.substr(8, 3)
 }

@@ -57,6 +57,11 @@ public class AdminController extends BaseController {
         return response;
     }
 
+
+    /**
+     * 查找所有雇主
+     * @return
+     */
     @RequestMapping("/selectAllCustomer")
     @ResponseBody
     public ResponseResult<List<Customer>> selectAllCustomer () {

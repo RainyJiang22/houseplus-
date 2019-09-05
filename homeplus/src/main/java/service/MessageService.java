@@ -26,4 +26,18 @@ public interface MessageService {
      * @throws NoMessagePermission 没有发送留言的权限
      */
     Integer insertMessage (String msgContent, HttpSession session, int toID) throws UserNoLoginException, NoMessagePermission;
+
+
+    /**
+     * 保姆对雇主发送消息
+     * @param msgContent
+     * @param session
+     * @param toID  需要发送的ID编号
+     * @return
+     * @throws UserNoLoginException  用户未登录异常
+     * @throws NoMessagePermission 没有发送留言的权限
+     */
+    Integer insertMessageBYCustomer (String msgContent, HttpSession session, int toID) throws UserNoLoginException, NoMessagePermission;
+
+
 }

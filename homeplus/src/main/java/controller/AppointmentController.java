@@ -108,6 +108,11 @@ public class AppointmentController extends BaseController {
     }
 
 
+    /**
+     * 获取所有预约的消费者
+     * @param session
+     * @return
+     */
     @RequestMapping("/getAppCustomer")
     @ResponseBody
     public ResponseResult<List<Appointment>> getAppCustomer (

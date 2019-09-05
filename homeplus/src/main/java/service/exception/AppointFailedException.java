@@ -2,7 +2,7 @@ package service.exception;
 
 /**
  * @program: homeplus
- * @description:
+ * @description: 预约失败的异常
  * @author: JSY
  * @create: 2019-08-30 15:57
  **/

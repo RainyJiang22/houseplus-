@@ -39,6 +39,26 @@ public class PersonServiceImpl implements PersonService {
         }
     }
 
+    /**
+     * 找到所有的雇主信息
+     * @return
+     */
+    @Override
+    public List<Customer> selectAllCustomer() {
+        return personMapper.selectAllCustomer();
+    }
+
+    /**
+     * 通过ID获取雇主的信息
+     * @param id 雇主的编号
+     * @return
+     */
+    @Override
+    public Customer getCustomerByID(Integer id) {
+        Customer cm = personMapper.getCustomerByID(id);
+        return cm;
+    }
+
     @Override
     public Integer updateCustomer(HttpSession session, Customer cm) {
         Integer result = 0;

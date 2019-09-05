@@ -21,13 +21,13 @@
 <!-- 页面上的最上面导航 -->
 <nav class="navbar navbar-default">
     <div class="navbar-header">
-        <a href="index.html"></a>
+        <a href="cm_index.html"></a>
     </div>
 
     <div>
         <ul class="nav navbar-nav">
             <li>
-                <a href="index.html">
+                <a href="cm_index.html">
                     <span class="glyphicon glyphicon-home"></span>
                     首页
                 </a>
@@ -54,27 +54,13 @@
                 <a href="#">个人中心</a>
                 <ul class="next-menu">
                     <li>
-                        <a href="person.html">个人资料</a>
+                        <a href="cm_person.html">个人资料</a>
                     </li>
                     <li>
-                        <a href="order.html">我的订单</a>
+                        <a href="cm_order.html">我的订单</a>
                     </li>
                     <li>
                         <a href="cm_app.html">我的预约</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="space">
-                <a href="#">家政人员中心</a>
-                <ul class="next-menu">
-                    <li>
-                        <a href="hk_person.html">商家资料</a>
-                    </li>
-                    <li>
-                        <a href="hk_app.html">预约列表</a>
-                    </li>
-                    <li>
-                        <a href="hk_order.html">我的订单</a>
                     </li>
                 </ul>
             </li>
@@ -156,9 +142,7 @@
                                 <div class="input-line">
                                     候选人：
                                     <ul class="apply-list">
-                                        <!--<li><a href="#">家政人员01</a><button class="confirm btn btn-primary">就你了</button></li>-->
-                                        <!--<li><a href="#">家政人员01</a><button class="confirm btn btn-primary">就你了</button></li>-->
-                                        <!--<li><a href="#">家政人员01</a><button class="confirm btn btn-primary">就你了</button></li>-->
+
                                     </ul>
                                 </div>
 
@@ -342,6 +326,7 @@
         return result;
     }
 
+    //加载时间
     function formatDate(mills) {
         var newTime = new Date(mills);
         var year = newTime.getFullYear();

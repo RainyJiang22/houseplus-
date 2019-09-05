@@ -17,13 +17,13 @@
 <!-- 页面上的最上面导航 -->
 <nav class="navbar navbar-default">
     <div class="navbar-header">
-        <a href="index.html"></a>
+        <a href="cm_index.html"></a>
     </div>
 
     <div>
         <ul class="nav navbar-nav">
             <li>
-                <a href="index.html">
+                <a href="cm_index.html">
                     <span class="glyphicon glyphicon-home"></span>
                     首页
                 </a>
@@ -50,27 +50,13 @@
                 <a href="#">个人中心</a>
                 <ul class="next-menu">
                     <li>
-                        <a href="person.html">个人资料</a>
+                        <a href="cm_person.html">个人资料</a>
                     </li>
                     <li>
-                        <a href="order.html">我的订单</a>
+                        <a href="cm_order.html">我的订单</a>
                     </li>
                     <li>
                         <a href="cm_app.html">我的预约</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="space">
-                <a href="#">家政人员中心</a>
-                <ul class="next-menu">
-                    <li>
-                        <a href="hk_person.html">商家资料</a>
-                    </li>
-                    <li>
-                        <a href="hk_app.html">预约列表</a>
-                    </li>
-                    <li>
-                        <a href="hk_order.html">我的订单</a>
                     </li>
                 </ul>
             </li>
@@ -109,8 +95,6 @@
 
     <!--家政人员列表项-->
     <div class="housekeeper-list clearfix">
-
-
     </div>
 </div>
 </body>
@@ -145,7 +129,7 @@
             retval = a.join("&");
             return "?" +retval+ (seted ? "" : (retval ? "&" : "") +val1+ "=" +val2);
         }
-    }
+    };
     var typeid = request.QueryString("typeid");
 
     // 页面加载函数...
@@ -157,7 +141,7 @@
         $(".log-out").click(function () {
             logout();
         })
-    })
+    });
 
     // 加载搜索结果
     function loadResult(container, param) {
@@ -178,12 +162,10 @@
                             "<img style='width: 100px; height: 100px;' src=\"#{hk_headPhoto}\" alt=\"家政人员照片\" class=\"img-rounded\">\n" +
                             "</div>\n" +
                             "<div class=\"col-md-6\">\n" +
-                            "<div class=\"h4\">#{hk_Slogan}</div>\n" +
+                            "<div class=\"h4\">#{hk_name}</div>\n" +
                             "<div>#{hk_hkDesc}</div>\n" +
                             "<div><a href=\"#\">#{hk_companyName}</a></div>\n" +
-                            "<div>\n" +
-                            // "<span class=\"badge\">金牌认证</span>\n" +
-                            // "<span class=\"badge\">带娃能手</span>\n" +
+                            "<div>\n"+
                             "#{span_list}\n" +
                             "</div>\n" +
                             "</div>\n" +
@@ -194,7 +176,7 @@
                         optionData = optionData.replace("#{hk_headPhoto}", list[i].hkHeadphoto);
                         optionData = optionData.replace("#{hk_id}", list[i].id);
                         optionData = optionData.replace("#{hk_hkDesc}", list[i].hkDesc);
-                        optionData = optionData.replace("#{hk_Slogan}", list[i].hkSlogan);
+                        optionData = optionData.replace("#{hk_name}", list[i].hkName); //加载名字
                         optionData = optionData.replace("#{hk_companyName}", list[i].companyName);
                         optionData = optionData.replace("#{span_list}", getLabelList(list[i].hkLabel));
                         container.append(optionData);
@@ -233,7 +215,7 @@
                             "<img style='width: 100px; height: 100px;' src=\"#{hk_headPhoto}\" alt=\"家政人员照片\" class=\"img-rounded\">\n" +
                             "</div>\n" +
                             "<div class=\"col-md-6\">\n" +
-                            "<div class=\"h4\">#{hk_Slogan}</div>\n" +
+                            "<div class=\"h4\">#{hk_name}</div>\n" +
                             "<div>#{hk_hkDesc}</div>\n" +
                             "<div><a href=\"#\">#{hk_companyName}</a></div>\n" +
                             "<div>\n" +
@@ -248,7 +230,7 @@
                             optionData = optionData.replace("#{hk_headPhoto}", list[i].hkHeadphoto);
                             optionData = optionData.replace("#{hk_id}", list[i].id);
                             optionData = optionData.replace("#{hk_hkDesc}", list[i].hkDesc);
-                            optionData = optionData.replace("#{hk_Slogan}", list[i].hkSlogan);
+                            optionData = optionData.replace("#{hk_name}", list[i].hkNames);
                             optionData = optionData.replace("#{hk_companyName}", list[i].companyName);
                             optionData = optionData.replace("#{span_list}", getLabelList(list[i].hkLabel));
                             container.append(optionData);

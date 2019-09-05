@@ -17,6 +17,21 @@ public interface PersonService {
      */
     Customer selectCustomer(HttpSession session) throws UserNoLoginException;
 
+
+    /**
+     * 得到所有雇主的信息
+     * @return 查询所有雇主的信息
+     */
+    List<Customer> selectAllCustomer();
+
+
+    /**
+     * 根据雇主的编号来获取雇主的具体信息
+     * @param id
+     * @return
+     */
+    Customer getCustomerByID(Integer id);
+
     /**
      * 更新消费者的基本资料
      * @param session

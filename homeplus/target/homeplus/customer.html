@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>雇主界面</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/sweetalert.css">
+    <link rel="stylesheet" href="css/appointment.css">
+    <link rel="stylesheet" href="css/housekeeper.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/customer.js"></script>
+    <script src="js/address.js"></script>
+    <script src="js/sweeralert.min.js"></script>
+</head>
+<body>
+
+<!-- 页面上的最上面导航 -->
+<nav class="navbar navbar-default">
+    <div class="navbar-header">
+        <a href="hk_index.html"></a>
+    </div>
+
+    <div>
+        <ul class="nav navbar-nav">
+            <li>
+                <a href="hk_index.html">
+                    <span class="glyphicon glyphicon-home"></span>
+                    首页
+                </a>
+            </li>
+            <li>
+                <a href="customerlist.html">
+                    <span class="glyphicon glyphicon-home"></span>
+                    雇主列表
+                </a>
+            </li>
+            <li class="log-out">
+                <a href="login.html">
+                    <span class="glyphicon glyphicon-log-out"></span>
+                    退出
+                </a>
+            </li>
+            <li class="space">
+                <a href="#">家政人员中心</a>
+                <ul class="next-menu">
+                    <li>
+                        <a href="hk_person.html">商家资料</a>
+                    </li>
+                    <li>
+                        <a href="hk_app.html">预约列表</a>
+                    </li>
+                    <li>
+                        <a href="hk_order.html">我的订单</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <div id="desc">
+        <div id="head">
+            <img  style='width: 100px; height: 100px;' class="head" src="images/list-head.png" alt="头像加载中...">
+            <span id="title">
+                    <h4 class="title">XXX雇主</h4>
+                    <button class="contact-btn btn btn-primary" data-toggle="modal">联系她/他</button>
+
+                <!-- 模态框（Modal） -->
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                        &times;
+                                    </button>
+                                    <h4 class="modal-title" id="myModalLabel">
+                                        联系方式
+                                    </h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="#" role="form">
+                                        <div class="form-group">
+
+                                            <div class="input-line app_phone" style="font-size: 40px; color: #0084ff">
+                                                11011
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                                    </button>
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal -->
+                    </div>
+                </span>
+        </div>
+        <div id="detail">
+            <div>
+                联系电话：
+                <span class="phone">15817351625</span>
+                <input class="left-msg" type="button" value="给我留言">
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 模态框 -->
+    <div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="messageModalLabel">
+                        留言
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <form action="#" role="form">
+                        <div class="form-group">
+                            <div class="input-line">
+                                留言内容：
+                                <input  class="msg-input type form-control" type="text">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                    </button>
+                    <button type="button" class="submit-msg btn btn-primary">发送
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
