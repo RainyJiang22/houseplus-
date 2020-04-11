@@ -205,7 +205,7 @@
                         optionData = optionData.replace("#{index}", i+1);
                         optionData = optionData.replace("#{type}", list[i].appType);
                         optionData = optionData.replace("#{address}", list[i].appAddress);
-                        optionData = optionData.replace("#{beginTime}", formatDate(list[i].appBeginTime));
+                        optionData = optionData.replace("#{beginTime}", list[i].appBeginTime);
                         optionData = optionData.replace("#{id}", list[i].id);
                         optionData = optionData.replace("#{op-id}", list[i].id);
                         $("tbody").append(optionData);
@@ -318,6 +318,7 @@
         })
     }
 
+    //申请保姆列表
     function appendList(nameList, idList) {
         var result = "";
         for (var i = 0; i < nameList.length; i ++) {
@@ -326,8 +327,8 @@
         return result;
     }
 
-    //加载时间
-    function formatDate(mills) {
+    //加载时间(加载实时时间)时间戳
+     function formatDate(mills) {
         var newTime = new Date(mills);
         var year = newTime.getFullYear();
         var month = newTime.getMonth() + 1;

@@ -50,7 +50,7 @@
                 </thead>
                 <tbody>
                 <!--<tr>-->
-                <!--<th class="msg-content">周尔康最帅周尔康最帅周尔康最帅周尔康最帅周尔康最帅</th>-->
+                <!--<th class="msg-content">舍友最帅舍友最帅舍友最帅舍友最帅舍友最帅</th>-->
                 <!--<th>2019/04/14 18:08</th>-->
                 <!--<th>-->
                 <!--<button class="see btn btn-primary">查看</button>-->
@@ -58,7 +58,7 @@
                 <!--</th>-->
                 <!--</tr>-->
                 <!--<tr>-->
-                <!--<th>周尔康最帅</th>-->
+                <!--<th>舍友最帅</th>-->
                 <!--<th>2019/04/14 18:08</th>-->
                 <!--<th>-->
                 <!--<button class="see btn btn-primary">查看</button>-->
@@ -99,7 +99,8 @@
                         "</th>\n" +
                         "</tr>";
                     optionData = optionData.replace("#{content}", showOmit(list[i].content));
-                    optionData = optionData.replace("#{createdDate}", list[i].createdTime);
+                    //将时间的时间戳改为改为当前时间
+                    optionData = optionData.replace("#{createdDate}", formatDate(list[i].createdTime));
                     optionData = optionData.replace("#{sid}", list[i].id);
                     optionData = optionData.replace("#{did}", list[i].id);
                     $("tbody").append(optionData);
@@ -150,6 +151,19 @@
             }
         })
     }
+
+    //加载当前时间
+    function formatDate(mills) {
+        var newTime = new Date(mills);
+        var year = newTime.getFullYear();
+        var month = newTime.getMonth() + 1;
+        var day = newTime.getDate();
+        var hour = newTime.getHours();
+        var minute = newTime.getMinutes();
+        var second = newTime.getSeconds();
+        return year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second;
+    }
+
 
     // 展示简略的内容
     function showOmit(str) {

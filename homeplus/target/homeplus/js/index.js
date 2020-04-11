@@ -109,7 +109,7 @@ function loadHouseKeeperList(url, container) {
                     "<img style='width: 100px; height: 100px;' src=\"#{hk_headPhoto}\" alt=\"家政人员照片\" class=\"img-rounded\">\n" +
                     "</div>\n" +
                     "<div class=\"col-md-6\">\n" +
-                    "<div class=\"h4\">#{hk_Slogan}</div>\n" +
+                    "<div class=\"h4\">#{hk_name}</div>\n" +
                     "<div>#{hk_hkDesc}</div>\n" +
                     "<div><a href=\"#\">#{hk_companyName}</a></div>\n" +
                     "<div>\n" +
@@ -123,7 +123,7 @@ function loadHouseKeeperList(url, container) {
                 optionData = optionData.replace("#{hk_headPhoto}", list[i].hkHeadphoto);
                 optionData = optionData.replace("#{hk_hkDesc}", list[i].hkDesc);
                 optionData = optionData.replace("#{hk_id}", list[i].id);
-                optionData = optionData.replace("#{hk_Slogan}", list[i].hkSlogan);
+                optionData = optionData.replace("#{hk_name}", list[i].hkName);
                 optionData = optionData.replace("#{hk_companyName}", list[i].companyName);
                 optionData = optionData.replace("#{span_list}", getLabelList(list[i].hkLabel));
                 container.append(optionData);
@@ -142,6 +142,9 @@ function getLabelList(str) {
     }
     return result;
 }
+
+
+//获取家政人员
 
 
 // 登录成功

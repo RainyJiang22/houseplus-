@@ -365,20 +365,20 @@ function searchByPhone(container) {
 
 // 修改用户信息
 function modifyUser(id) {
-        var url = "/admin/updateUserInfo";
-        var data = "id=" + id + "&password=" + $(".user-password").val() + "&role=" +$(".user-role").val() + "&status=" + $("input[name='user-status']").val();
-        $.ajax ({
-            "url": url,
-            "data": data,
-            "dataType": "json",
-            "type": "Post",
-            "success": function (json) {
-                if (json.state == 200) {
-                    alert("修改成功");
-                    getAllLogin($(".admin-tablebody"))
-                }
+    var url = "/admin/updateUserInfo";
+    var data = "id=" + id + "&password=" + $(".user-password").val() + "&role=" +$(".user-role").val() + "&status=" + $("input[name='user-status']").val();
+    $.ajax ({
+        "url": url,
+        "data": data,
+        "dataType": "json",
+        "type": "Post",
+        "success": function (json) {
+            if (json.state == 200) {
+                alert("修改成功");
+                getAllLogin($(".admin-tablebody"))
             }
-        })
+        }
+    })
 }
 
 // 获取所有的用户信息
@@ -574,7 +574,7 @@ function addCustomer () {
     var address = provinceVal + "-" + cityVal + "-" +areaVal;
     var url = "/admin/insertCustomer";
     var data = "nickname=" + nicknameVal + "&name=" + nameVal + "&gender=" + genderVal + "&phone=" + phoneVal
-                + "&email=" +emailVal + "&password=" + passwordVal + "&address=" + address;
+        + "&email=" +emailVal + "&password=" + passwordVal + "&address=" + address;
     $.ajax ({
         "url": url,
         "data": data,
@@ -626,143 +626,87 @@ function deleteLogin (usernameVal) {
 }
 // 渲染echarts
 $(function () {
-    $.ajax({
-        url:"/admin/getOrderData",
-        type:"GET",
-        success:function (result) {
-            var data1 = new Array();
-            var data2 = new Array();
-            if(result.state==200){
-                if(result.data!=null){
-                    var list = result.data;
-                    for(var i=0;i<list.length;i++){
-                        data1.push(list[i].name);
-                        data2.push({value:list[i].num, name:list[i].name})
-                    }
-                    var myChart = echarts.init(document.getElementById('orders'));
-                    option = {
-                        backgroundColor: '#eff3f6',
-
-                        title: {
-                            text: '订单类型统计',
-                            left: 'center',
-                            top: 20,
-                            textStyle: {
-                                color: '#000'
-                            }
-                        },
-
-                        tooltip : {
-                            trigger: 'item',
-                            formatter: "{a} <br/>{b} : {c} ({d}%)"
-                        },
-
-                        visualMap: {
-                            show: false,
-                            min: 80,
-                            max: 600,
-                            inRange: {
-                                colorLightness: [0, 1]
-                            }
-                        },
-                        series : [
-                            {
-                                name:'类型',
-                                type:'pie',
-                                radius : '55%',
-                                center: ['50%', '50%'],
-                                data:data2.sort(function (a, b) { return a.value - b.value; }),
-                                roseType: 'radius',
-                                roseType: 'radius',
-                                label: {
-                                    normal: {
-                                        textStyle: {
-                                            color: 'rgba(255, 255, 255, 0.3)'
-                                        }
-                                    }
-                                },
-                                labelLine: {
-                                    normal: {
-                                        lineStyle: {
-                                            color: 'rgba(255, 255, 255, 0.3)'
-                                        },
-                                        smooth: 0.2,
-                                        length: 10,
-                                        length2: 20
-                                    }
-                                },
-                                itemStyle: {
-                                    normal: {
-                                        color: '#c23531',
-                                        shadowBlur: 200,
-                                        shadowColor: 'rgba(0, 0, 0, 0.5)'
-                                    }
-                                },
-
-                                animationType: 'scale',
-                                animationEasing: 'elasticOut',
-                                animationDelay: function (idx) {
-                                    return Math.random() * 200;
-                                }
-                            }
-                        ]
-                    };
-                    myChart.setOption(option);
-                }else {
-                    alert("暂无数据!");
-                }
-            }else{
-                alert(result.message);
-            }
-        }
-    })
-    //预约类型统计
     // $.ajax({
-    //     url:"/admin/getAppoimentData",
+    //     url:"/admin/getOrderData",
     //     type:"GET",
     //     success:function (result) {
     //         var data1 = new Array();
     //         var data2 = new Array();
-    //         if(result.state == 200){
+    //         if(result.state==200){
     //             if(result.data!=null){
     //                 var list = result.data;
     //                 for(var i=0;i<list.length;i++){
     //                     data1.push(list[i].name);
     //                     data2.push({value:list[i].num, name:list[i].name})
     //                 }
-    //                 var myChart = echarts.init(document.getElementById('apps'));
-    //                 var option = {
-    //                     title : {
-    //                         text: '预约类型统计',
-    //                         x:'left'
+    //                 var myChart = echarts.init(document.getElementById('orders'));
+    //                 option = {
+    //                     backgroundColor: '#eff3f6',
+    //
+    //                     title: {
+    //                         text: '订单类型统计',
+    //                         left: 'center',
+    //                         top: 20,
+    //                         textStyle: {
+    //                             color: '#000'
+    //                         }
     //                     },
+    //
     //                     tooltip : {
     //                         trigger: 'item',
     //                         formatter: "{a} <br/>{b} : {c} ({d}%)"
     //                     },
-    //                     legend: {
-    //                         orient: 'vertical',
-    //                         left: 'left',
-    //                         data: data1
+    //
+    //                     visualMap: {
+    //                         show: false,
+    //                         min: 80,
+    //                         max: 600,
+    //                         inRange: {
+    //                             colorLightness: [0, 1]
+    //                         }
     //                     },
     //                     series : [
     //                         {
-    //                             name: '类型',
-    //                             type: 'pie',
+    //                             name:'类型',
+    //                             type:'pie',
     //                             radius : '55%',
-    //                             center: ['50%', '60%'],
-    //                             data:data2,
+    //                             center: ['50%', '50%'],
+    //                             data:data2.sort(function (a, b) { return a.value - b.value; }),
+    //                             roseType: 'radius',
+    //                             roseType: 'radius',
+    //                             label: {
+    //                                 normal: {
+    //                                     textStyle: {
+    //                                         color: 'rgba(255, 255, 255, 0.3)'
+    //                                     }
+    //                                 }
+    //                             },
+    //                             labelLine: {
+    //                                 normal: {
+    //                                     lineStyle: {
+    //                                         color: 'rgba(255, 255, 255, 0.3)'
+    //                                     },
+    //                                     smooth: 0.2,
+    //                                     length: 10,
+    //                                     length2: 20
+    //                                 }
+    //                             },
     //                             itemStyle: {
-    //                                 emphasis: {
-    //                                     shadowBlur: 10,
-    //                                     shadowOffsetX: 0,
+    //                                 normal: {
+    //                                     color: '#c23531',
+    //                                     shadowBlur: 200,
     //                                     shadowColor: 'rgba(0, 0, 0, 0.5)'
     //                                 }
+    //                             },
+    //
+    //                             animationType: 'scale',
+    //                             animationEasing: 'elasticOut',
+    //                             animationDelay: function (idx) {
+    //                                 return Math.random() * 200;
     //                             }
     //                         }
     //                     ]
     //                 };
-    //
     //                 myChart.setOption(option);
     //             }else {
     //                 alert("暂无数据!");
@@ -772,4 +716,60 @@ $(function () {
     //         }
     //     }
     // })
+    //预约类型统计
+    $.ajax({
+        url:"/admin/getAppoimentData",
+        type:"GET",
+        success:function (result) {
+            var data1 = new Array();
+            var data2 = new Array();
+            if(result.state == 200){
+                if(result.data!=null){
+                    var list = result.data;
+                    for(var i=0;i<list.length;i++){
+                        data1.push(list[i].name);
+                        data2.push({value:list[i].num, name:list[i].name})
+                    }
+                    var myChart = echarts.init(document.getElementById('apps'));
+                    var option = {
+                        title : {
+                            text: '预约类型统计',
+                            x:'center'
+                        },
+                        tooltip : {
+                            trigger: 'item',
+                            formatter: "{a} <br/>{b} : {c} ({d}%)"
+                        },
+                        legend: {
+                            orient: 'vertical',
+                            left: 'left',
+                            data: data1
+                        },
+                        series : [
+                            {
+                                name: '类型',
+                                type: 'pie',
+                                radius : '55%',
+                                center: ['50%', '60%'],
+                                data:data2,
+                                itemStyle: {
+                                    emphasis: {
+                                        shadowBlur: 10,
+                                        shadowOffsetX: 0,
+                                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                    }
+                                }
+                            }
+                        ]
+                    };
+
+                    myChart.setOption(option);
+                }else {
+                    alert("暂无数据!");
+                }
+            }else{
+                alert(result.message);
+            }
+        }
+    })
 });

@@ -56,7 +56,7 @@ public class IndexController extends BaseController {
     @ResponseBody
     public ResponseResult<List<HouseKeeper>> getTopHouseKeeper () {
         ResponseResult<List<HouseKeeper>> result = new ResponseResult<>();
-        //
+        //获取订单类
         List<HouseKeeper> list = indexService.getTopHousekeeper(5);
         result.setData(list);
         return result;

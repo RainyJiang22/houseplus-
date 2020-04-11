@@ -120,4 +120,6 @@ public interface AdminService {
      * @return 用户列表
      */
     List<User> getUserByPhone (String phone) throws ContentException;
+
+
 }

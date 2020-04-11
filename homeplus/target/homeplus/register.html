@@ -11,7 +11,7 @@
 	<body>
 		<nav class="navbar navbar-default">
 			<div class="navbar-header">
-				<a href="index.html"></a>
+				<a href="cm_index.html"></a>
 			</div>
 			
 			<div>
@@ -177,7 +177,12 @@
                 "success": function(json) {
                     if (json.state == 200) {
                         alert("注册成功！");
-                        window.location.href = "index.html";
+						// if(json.data == 0){ //判断状态为0的话是雇主
+							// 	window.location.href = "cm_index.html";
+							// }else if(json.data == 1){ //判断状态为1的话是保姆
+							// 	window.location.href = "hk_index.html";
+							// }
+                       window.location.href = "login.html";
                     } else if (json.state == 401) {
                         alert("注册失败！" + json.message);
                     }

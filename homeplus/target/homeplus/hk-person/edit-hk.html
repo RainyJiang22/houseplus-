@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>商家资料</title>
+    <title>家政人员资料</title>
     <link rel="stylesheet" href="../css/bootstrap.css">
     <link rel="stylesheet" href="../css/sweetalert.css">
 
@@ -24,7 +24,7 @@
 <body>
 <div class="container">
     <h3 style="color: #0084ff; font-weight: bold">
-        商家资料
+        家政人员资料
     </h3>
     <form action="#">
         <div>
@@ -59,8 +59,7 @@
         <div>
             <label for="">所在公司</label>
             <select id="company" class="form-control">
-                <!--<option value="0">公司01</option>-->
-                <!--<option value="1">公司02</option>-->
+                <!--<option value="0">公司01</option>--><!--模板样式-->
             </select>
         </div>
 
@@ -145,15 +144,17 @@
         })
     }
 
+    //使用逗号进行分割
     function splitList(str) {
         return str.split(",");
     }
+    //ajax请求函数，测试用的
     function ajaxFunc() {
         $.ajax({
-            "url": url,
-            "data": data,
-            "dataType": dataType,
-            "type": type,
+            "url": url, //接口地址
+            "data": data, //接口携带的数据
+            "dataType": dataType, //数据类型
+            "type": type, //类型
             "success": function (json) {
 
             }

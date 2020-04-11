@@ -55,8 +55,8 @@ function showCustomer(id){
            //成功回调后
            if (json.state == 200){
                $(".title").text(json.data.cmName);
-               //隐藏当前手机号
-               $(".phone").text(displayPhone(json.data.cmPhone));
+               //隐藏当前手机号（目前显示）
+               $(".phone").text(json.data.cmPhone);
            }
        }
    })
@@ -95,7 +95,11 @@ function message(id) {
     })
 }
 
-
+/**
+ * 这个方法不调用，就不会隐藏手机号
+ * @param phone
+ * @returns {string}
+ */
 //用于隐藏手机号
 function displayPhone(phone) {
     return phone.substr(0,4) + "****" + phone.substr(8, 3)

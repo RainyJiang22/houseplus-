@@ -31,6 +31,13 @@ public class CommentServiceImpl implements CommentService {
     @Autowired
     private PersonMapper personMapper;
 
+    /**
+     * 获取评论信息列表 （这里就是进行显示列表，
+     * 我已经写好了service业务层的逻辑，需要在controller层中调用，
+     * 最后需要用ajax请求进行前端界面获取数据）
+     * @param id 家政人员的编号
+     * @return
+     */
     @Override
     public List<Comment> getCommentListByID(int id) {
         List<Order> orderList = orderMapper.getOrderListByHKID(id);
@@ -39,17 +46,20 @@ public class CommentServiceImpl implements CommentService {
             int orderID = order.getId();
             int cmID = order.getCmID();
             Customer customer = personMapper.selectCustomerByID(cmID);
+            //如果没有订单号评价了，直接返回
             if (commentMapper.getCommentByOrderID(orderID) == null) {
                 continue;
             } else {
                 Comment comment = commentMapper.getCommentByOrderID(orderID);
                 comment.setCommentPublicer(customer.getCmNickname());
+                //将这条评论添加到数据库
                 commentList.add(comment);
             }
         }
         return commentList;
     }
 
+    //直接插入评价信息到数据库表
     @Override
     public Integer insertComment(Comment comment) {
         return commentMapper.insertComment(comment);

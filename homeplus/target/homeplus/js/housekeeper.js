@@ -33,7 +33,7 @@ $(document).ready(function () {
     loginSuccess();
     showDiff();
     showContent(id);
-    loadComment(id);
+    loadComment(id); //加载评价
     initAddress();
     message(id);
     $(".log-out").click (function () {
@@ -159,6 +159,7 @@ function loadComment(id) {
                         "#{comment_time}\n" +
                         "</div>\n" +
                         "</div>";
+                    //这里有进行判断，所以界面的业务层应该没有出错，错误应该在插入数据库的时候
                     if (data[i].commentStar == 2) {
                         optionData = optionData.replace("#{comment_type}", "好评");
                         optionData = optionData.replace("#{img_src}", "images/good.png");
@@ -187,7 +188,12 @@ function getGoodPercent(data) {
     return (result*100).toFixed(1);
 }
 
-// 获得好评数
+
+
+
+
+
+//获取好评数
 function getGoodNum(data) {
     var goodNum = 0;
     for (var i = 0; i < data.length; i ++) {
@@ -220,6 +226,7 @@ function getBadNum(data) {
     return badNum;
 }
 
+//隐藏手机号
 function displayPhone(phone) {
     return phone.substr(0,4) + "****" + phone.substr(8, 3)
 }

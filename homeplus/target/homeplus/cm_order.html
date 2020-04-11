@@ -332,9 +332,11 @@
         })
     }
 
+    //提交评价
     function submitAssess(orderID) {
         $(".submit-assess").parent().on("click", ".submit-assess", function () {
             var url = "/order/assessOrder";
+            //评价等级根据获取的星级来进行
             var data = "orderID=" + orderID + "&commentStar=" + $("input[name='assess']").val()
                 + "&commentContent=" + $(".comment-content").val();
             $.ajax({

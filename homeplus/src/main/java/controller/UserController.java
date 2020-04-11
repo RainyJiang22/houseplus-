@@ -64,7 +64,7 @@ public class UserController extends BaseController {
         user.setRole(role);
         user.setStatus(1);
         userService.insert(user);
-        session.setAttribute("username", username);
+        session.setAttribute("username", username); //将用户手机号码作为session值传递
         return new ResponseResult<Void>();
     }
 

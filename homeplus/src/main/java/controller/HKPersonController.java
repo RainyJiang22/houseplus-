@@ -188,6 +188,11 @@ public class HKPersonController extends BaseController{
     }
 
 
+    /**
+     * 加载保姆的信息内容
+     * @param param
+     * @return
+     */
     @RequestMapping("/loadContent")
     @ResponseBody
     public ResponseResult<HouseKeeper> loadContent (
@@ -199,13 +204,17 @@ public class HKPersonController extends BaseController{
         return result;
     }
 
+    /**
+     * 加载评价信息列表
+     */
     @RequestMapping("/loadComment")
     @ResponseBody
-    public ResponseResult<List<Comment>> loadComment (
-            @RequestParam("param") Integer param
-    ) {
+    public ResponseResult<List<Comment>> loadComment(
+            @RequestParam("param") Integer param)
+    {
         ResponseResult<List<Comment>> result = new ResponseResult<>();
-        List<Comment> list = commentService.getCommentListByID(param);
+        List<Comment>  list = commentService.getCommentListByID(param);
+        //获取评论信息表中对该保姆的全部评论
         result.setData(list);
         return result;
     }

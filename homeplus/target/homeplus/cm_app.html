@@ -318,6 +318,7 @@
         })
     }
 
+    //申请保姆列表
     function appendList(nameList, idList) {
         var result = "";
         for (var i = 0; i < nameList.length; i ++) {
@@ -326,7 +327,7 @@
         return result;
     }
 
-    //加载时间
+    //加载时间(加载实时时间)
     function formatDate(mills) {
         var newTime = new Date(mills);
         var year = newTime.getFullYear();
